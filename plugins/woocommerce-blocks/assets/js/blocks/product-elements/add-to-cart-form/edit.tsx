@@ -4,7 +4,6 @@
 import { useEffect } from '@wordpress/element';
 import { useBlockProps } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
-import { Skeleton } from '@woocommerce/base-components/skeleton';
 import { BlockEditProps } from '@wordpress/blocks';
 import { Disabled, Tooltip } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
@@ -75,7 +74,6 @@ const Edit = ( props: BlockEditProps< Attributes > ) => {
 					position="bottom right"
 				>
 					<div className="wc-block-editor-add-to-cart-form-container">
-						<Skeleton numberOfLines={ 3 } />
 						<Disabled>
 							{ ( props.attributes.quantitySelectorStyle ===
 								QuantitySelectorStyle.Input ||
