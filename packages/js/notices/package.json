@@ -53,11 +53,11 @@
 		]
 	},
 	"dependencies": {
-		"@wordpress/a11y": "wp-6.0",
-		"@wordpress/notices": "wp-6.0"
+		"@wordpress/a11y": "wp-6.6",
+		"@wordpress/notices": "wp-6.6"
 	},
 	"peerDependencies": {
-		"@wordpress/data": "wp-6.0",
+		"@wordpress/data": "wp-6.6",
 		"lodash": "^4.17.0",
 		"react": "17.0.x",
 		"react-dom": "17.0.x"

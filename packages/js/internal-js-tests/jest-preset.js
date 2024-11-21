@@ -11,6 +11,14 @@ const transformModules = {
 	'is-plain-obj': {
 		'index\\.js$': 'babel-jest',
 	},
+	lib0: {
+		'*.js$': 'babel-jest',
+		'*.cjs$': 'babel-jest',
+	},
+	yjs: {
+		'*.js$': 'babel-jest',
+		'*.cjs$': 'babel-jest',
+	},
 };
 
 module.exports = {

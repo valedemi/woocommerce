@@ -758,7 +758,7 @@
 		"@woocommerce/admin-library": "workspace:*",
 		"@woocommerce/block-library": "workspace:*",
 		"@woocommerce/classic-assets": "workspace:*",
-		"@wordpress/browserslist-config": "wp-6.0"
+		"@wordpress/browserslist-config": "wp-6.6"
 	},
 	"nodemonConfig": {
 		"delay": 2500,
@@ -825,10 +825,8 @@
 				"node_modules/@woocommerce/e2e-core-tests/CHANGELOG.md",
 				"node_modules/@woocommerce/api/dist/",
 				"node_modules/@woocommerce/admin-e2e-tests/build",
-				"node_modules/@woocommerce/classic-assets/build",
 				"node_modules/@woocommerce/block-library/build",
 				"node_modules/@woocommerce/block-library/blocks.ini",
-				"node_modules/@woocommerce/admin-library/build",
 				"package.json",
 				"!node_modules/@woocommerce/admin-e2e-tests/*.ts.map",
 				"!node_modules/@woocommerce/admin-e2e-tests/*.tsbuildinfo",
