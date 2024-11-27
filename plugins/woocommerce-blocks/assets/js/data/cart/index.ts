@@ -19,15 +19,15 @@ import {
 	debouncedUpdatePaymentMethods,
 } from './update-payment-methods';
 import { ResolveSelectFromMap } from '../mapped-types';
-
-const store = createReduxStore( STORE_KEY, {
+export const config = {
 	reducer,
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	actions: actions as any,
 	controls: dataControls,
 	selectors,
 	resolvers,
-} );
+};
+const store = createReduxStore( STORE_KEY, config );
 
 register( store );
 
