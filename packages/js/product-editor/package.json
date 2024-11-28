@@ -89,7 +89,7 @@
 		"@testing-library/user-event": "13.5.0",
 		"@types/dompurify": "^2.4.0",
 		"@types/jest": "27.5.x",
-		"@types/react": "17.0.x",
+		"@types/react": "18.3.x",
 		"@types/testing-library__jest-dom": "^5.14.9",
 		"@types/wordpress__block-editor": "7.0.0",
 		"@types/wordpress__block-library": "2.6.1",
@@ -118,8 +118,8 @@
 		"mini-css-extract-plugin": "^2.7.6",
 		"postcss": "^8.4.32",
 		"postcss-loader": "^4.3.0",
-		"react": "17.0.x",
-		"react-dom": "17.0.x",
+		"react": "18.3.x",
+		"react-dom": "18.3.x",
 		"rimraf": "5.0.5",
 		"sass-loader": "^10.5.0",
 		"ts-jest": "29.1.x",
@@ -150,10 +150,10 @@
 		"watch:build:project:esm": "wireit"
 	},
 	"peerDependencies": {
-		"@types/react": "17.0.x",
+		"@types/react": "18.3.x",
 		"@wordpress/data": "wp-6.6",
-		"react": "17.0.x",
-		"react-dom": "17.0.x"
+		"react": "18.3.x",
+		"react-dom": "18.3.x"
 	},
 	"config": {
 		"ci": {
