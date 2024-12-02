@@ -3,4 +3,5 @@ export interface BlockAttributes {
 	isDescendentOfQueryLoop: boolean;
 	isDescendantOfAllProducts: boolean;
 	isDescendentOfSingleProductTemplate?: boolean;
+	selectedProductType?: string;
 }

@@ -67,18 +67,23 @@ const getTextBasedOnStock = ( {
  *
  * @param product                             Product object
  * @param isDescendentOfSingleProductTemplate Whether the block is a descendent of the Single Product Template block
+ * @param selectedProductType                 Selected product type
  * @return True if stock indicator should be visible
  */
 const isStockVisible = (
 	product: ProductResponseItem,
-	isDescendentOfSingleProductTemplate: boolean | undefined
+	isDescendentOfSingleProductTemplate: boolean | undefined,
+	selectedProductType: string | undefined
 ): boolean => {
+	const productType = selectedProductType || product?.type;
+	if ( isDescendentOfSingleProductTemplate ) {
+		return ALLOWED_PRODUCT_TYPES.includes( productType );
+	}
 	if (
-		! isDescendentOfSingleProductTemplate &&
-		( ! product.id ||
-			! ALLOWED_PRODUCT_TYPES.includes( product.type ) ||
-			product.sold_individually ||
-			( ! product.manage_stock && product.type !== 'simple' ) )
+		! product.id ||
+		! ALLOWED_PRODUCT_TYPES.includes( product.type ) ||
+		product.sold_individually ||
+		( ! product.manage_stock && product.type !== 'simple' )
 	) {
 		return false;
 	}
@@ -93,14 +98,20 @@ export const Block = ( props: Props ): JSX.Element | null => {
 	const { parentClassName } = useInnerBlockLayoutContext();
 	const { product } = useProductDataContext();
 
-	const isDescendentOfSingleProductTemplate =
-		props.isDescendentOfSingleProductTemplate;
+	const { isDescendentOfSingleProductTemplate, selectedProductType } = props;
 
-	if ( ! isStockVisible( product, isDescendentOfSingleProductTemplate ) ) {
+	if (
+		! isStockVisible(
+			product,
+			isDescendentOfSingleProductTemplate,
+			selectedProductType
+		)
+	) {
 		return null;
 	}
 
-	const inStock = !! product.is_in_stock;
+	const inStock =
+		isDescendentOfSingleProductTemplate || !! product.is_in_stock;
 	const lowStock = product.low_stock_remaining;
 	const isBackordered = product.is_on_backorder;
 
