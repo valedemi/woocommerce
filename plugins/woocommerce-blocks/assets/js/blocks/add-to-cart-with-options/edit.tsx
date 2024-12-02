@@ -11,10 +11,12 @@ import { __ } from '@wordpress/i18n';
  * Internal dependencies
  */
 import { useIsDescendentOfSingleProductBlock } from '../../atomic/blocks/product-elements/shared/use-is-descendent-of-single-product-block';
+import { useIsDescendentOfSingleProductTemplate } from '../../atomic/blocks/product-elements/shared/use-is-descendent-of-single-product-template';
 import { AddToCartOptionsSettings } from './settings';
 export interface Attributes {
 	className?: string;
 	isDescendentOfSingleProductBlock: boolean;
+	isDescendentOfSingleProductTemplate: boolean;
 }
 
 export type FeaturesKeys = 'isBlockifiedAddToCart';
@@ -25,24 +27,6 @@ export type FeaturesProps = {
 
 export type UpdateFeaturesType = ( key: FeaturesKeys, value: boolean ) => void;
 
-const INNER_BLOCKS_TEMPLATE: InnerBlockTemplate[] = [
-	[
-		'core/heading',
-		{
-			level: 2,
-			content: __( 'Add to Cart', 'woocommerce' ),
-		},
-	],
-	[ 'woocommerce/product-stock-indicator' ],
-	[
-		'woocommerce/product-button',
-		{
-			textAlign: 'center',
-			fontSize: 'small',
-		},
-	],
-];
-
 const AddToCartOptionsEdit = ( props: BlockEditProps< Attributes > ) => {
 	const { setAttributes } = props;
 
@@ -51,12 +35,42 @@ const AddToCartOptionsEdit = ( props: BlockEditProps< Attributes > ) => {
 		useIsDescendentOfSingleProductBlock( {
 			blockClientId: blockProps?.id,
 		} );
+	const { isDescendentOfSingleProductTemplate } =
+		useIsDescendentOfSingleProductTemplate();
+
+	const INNER_BLOCKS_TEMPLATE: InnerBlockTemplate[] = [
+		[
+			'core/heading',
+			{
+				level: 2,
+				content: __( 'Add to Cart', 'woocommerce' ),
+			},
+		],
+		[
+			'woocommerce/product-stock-indicator',
+			{
+				isDescendentOfSingleProductTemplate,
+			},
+		],
+		[
+			'woocommerce/product-button',
+			{
+				textAlign: 'center',
+				fontSize: 'small',
+			},
+		],
+	];
 
 	useEffect( () => {
 		setAttributes( {
 			isDescendentOfSingleProductBlock,
+			isDescendentOfSingleProductTemplate,
 		} );
-	}, [ setAttributes, isDescendentOfSingleProductBlock ] );
+	}, [
+		setAttributes,
+		isDescendentOfSingleProductBlock,
+		isDescendentOfSingleProductTemplate,
+	] );
 
 	return (
 		<>

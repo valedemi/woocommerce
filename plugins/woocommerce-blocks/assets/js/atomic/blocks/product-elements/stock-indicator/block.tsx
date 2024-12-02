@@ -65,15 +65,16 @@ const getTextBasedOnStock = ( {
  * - Product is sold individually
  * - Product stock is not managed (except for simple products)
  *
- * @param {ProductResponseItem} product Product object
- * @return {boolean} True if stock indicator should be visible
+ * @param product                             Product object
+ * @param isDescendentOfSingleProductTemplate Whether the block is a descendent of the Single Product Template block
+ * @return True if stock indicator should be visible
  */
 const isStockVisible = (
 	product: ProductResponseItem,
-	isDescendentOfSingleProductBlock: boolean | undefined
+	isDescendentOfSingleProductTemplate: boolean | undefined
 ): boolean => {
 	if (
-		isDescendentOfSingleProductBlock &&
+		! isDescendentOfSingleProductTemplate &&
 		( ! product.id ||
 			! ALLOWED_PRODUCT_TYPES.includes( product.type ) ||
 			product.sold_individually ||
@@ -92,10 +93,10 @@ export const Block = ( props: Props ): JSX.Element | null => {
 	const { parentClassName } = useInnerBlockLayoutContext();
 	const { product } = useProductDataContext();
 
-	const isDescendentOfSingleProductBlock =
-		props.isDescendentOfSingleProductBlock;
+	const isDescendentOfSingleProductTemplate =
+		props.isDescendentOfSingleProductTemplate;
 
-	if ( ! isStockVisible( product, isDescendentOfSingleProductBlock ) ) {
+	if ( ! isStockVisible( product, isDescendentOfSingleProductTemplate ) ) {
 		return null;
 	}
 
@@ -138,7 +139,7 @@ export const Block = ( props: Props ): JSX.Element | null => {
 };
 
 export default ( props: Props ) => {
-	if ( ! props.isDescendentOfSingleProductBlock ) {
+	if ( props.isDescendentOfSingleProductTemplate ) {
 		return <Block { ...props } />;
 	}
 	return withProductDataContext( Block )( props );

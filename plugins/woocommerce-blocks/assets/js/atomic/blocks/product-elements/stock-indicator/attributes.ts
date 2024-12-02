@@ -16,7 +16,7 @@ export const blockAttributes: BlockAttributes = {
 		type: 'boolean',
 		default: false,
 	},
-	isDescendentOfSingleProductBlock: {
+	isDescendentOfSingleProductTemplate: {
 		type: 'boolean',
 		default: false,
 	},
