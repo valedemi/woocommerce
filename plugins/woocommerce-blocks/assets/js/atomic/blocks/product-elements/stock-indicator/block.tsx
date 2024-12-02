@@ -68,11 +68,16 @@ const getTextBasedOnStock = ( {
  * @param {ProductResponseItem} product Product object
  * @return {boolean} True if stock indicator should be visible
  */
-const isStockVisible = ( product: ProductResponseItem ): boolean => {
+const isStockVisible = (
+	product: ProductResponseItem,
+	isDescendentOfSingleProductBlock: boolean | undefined
+): boolean => {
 	if (
-		! ALLOWED_PRODUCT_TYPES.includes( product.type ) ||
-		product.sold_individually ||
-		( ! product.manage_stock && product.type !== 'simple' )
+		isDescendentOfSingleProductBlock &&
+		( ! product.id ||
+			! ALLOWED_PRODUCT_TYPES.includes( product.type ) ||
+			product.sold_individually ||
+			( ! product.manage_stock && product.type !== 'simple' ) )
 	) {
 		return false;
 	}
@@ -87,7 +92,10 @@ export const Block = ( props: Props ): JSX.Element | null => {
 	const { parentClassName } = useInnerBlockLayoutContext();
 	const { product } = useProductDataContext();
 
-	if ( ! product.id || ! isStockVisible( product ) ) {
+	const isDescendentOfSingleProductBlock =
+		props.isDescendentOfSingleProductBlock;
+
+	if ( ! isStockVisible( product, isDescendentOfSingleProductBlock ) ) {
 		return null;
 	}
 
@@ -129,4 +137,9 @@ export const Block = ( props: Props ): JSX.Element | null => {
 	);
 };
 
-export default withProductDataContext( Block );
+export default ( props: Props ) => {
+	if ( ! props.isDescendentOfSingleProductBlock ) {
+		return <Block { ...props } />;
+	}
+	return withProductDataContext( Block )( props );
+};
