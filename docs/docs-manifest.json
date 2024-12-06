@@ -285,6 +285,18 @@
               "links": {
                 "../../extensibility-in-blocks/README.md": "ef684d3345f67690b37179cd879a40072f5c6f80"
               }
+            },
+            {
+              "post_title": "Cart and Checkout - Hook alternatives",
+              "menu_title": "Hook alternatives",
+              "tags": "reference",
+              "edit_url": "https://github.com/woocommerce/woocommerce/edit/trunk/docs/cart-and-checkout-blocks/hooks/hook-alternatives.md",
+              "hash": "c100db14ccff379e6f0a38a3244573ea9b1366ccc7cd2388e9764614eb17ffac",
+              "url": "https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/docs/cart-and-checkout-blocks/hooks/hook-alternatives.md",
+              "id": "8eed024a999bde3db20e86556b9dd0efaba814bd",
+              "links": {
+                "": "a4285ea554ac695e050a5d6d73a273b508172e02"
+              }
             }
           ],
           "categories": []
@@ -1859,5 +1871,5 @@
       "categories": []
     }
   ],
-  "hash": "0bf98586d4a5d056d60876c57d7d840a921ea9ed5e8a66af07076bf0b361e0c1"
+  "hash": "fbefbaa3130b7c16c3f3177db60e7dd32d7f97f228c869b09a67a598691fbc0c"
 }
