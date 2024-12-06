@@ -40,6 +40,7 @@ class ShippingLabelBanner {
 	 * @return bool
 	 */
 	private function should_show_meta_box() {
+		return true;
 		if ( ! $this->shipping_label_banner_display_rules ) {
 			$dotcom_connected = null;
 			$wcs_version      = null;
